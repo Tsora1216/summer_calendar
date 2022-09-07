@@ -24,7 +24,7 @@ class _CalenderPageState extends State<CalenderScreen> {
   }
 
   DateTime _focusedDay = DateTime.now();
-  DateTime _selectedDay = DateTime.now();
+  DateTime? _selectedDay;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,12 @@ class _CalenderPageState extends State<CalenderScreen> {
         children: [
           Center(
             child: TableCalendar(
+              selectedDayPredicate: (day){
+                return isSameDay(_selectedDay,day);
+              },
               onDaySelected: (selectedDay, focusedDay) {
+                print(isSameDay(selectedDay,_selectedDay));
+                if (!isSameDay(selectedDay,_selectedDay))
                 setState(() {
                   _selectedDay = selectedDay;
                   _focusedDay = focusedDay; // update `_focusedDay` here as well
@@ -70,6 +75,5 @@ class _CalenderPageState extends State<CalenderScreen> {
     );
   }
   void _selectRightButton(){
-
   }
 }
