@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:summer_calendar/router_manager.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class EventData {
@@ -33,6 +34,9 @@ class _CalenderPageState extends State<CalenderScreen> {
       EventData(DateTime.now().add(Duration(days: 8)), ["event456", "event1"]),
       EventData(DateTime.now().add(Duration(days: 9)), ["event456", "event1"]),
     ];
+  }
+  void _segueToTextInput(BuildContext context){
+    Navigator.of(context).pushNamed(Routers.textInput);
   }
 
   DateTime _focusedDay = DateTime.now();
@@ -96,18 +100,15 @@ class _CalenderPageState extends State<CalenderScreen> {
               bottom: 24,
               right: 24,
               child: GestureDetector(
-                onTap: ()=> print("A"),
+                onTap: ()=> _segueToTextInput(context),
                 child: Container(
                   height: 50,
                   color: Colors.red,
                   width: 50,
-                  child: GestureDetector(
-                    onTap: () => null,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
-                      size: 30.0,
-                    ),
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 30.0,
                   ),
                 ),
               ),
