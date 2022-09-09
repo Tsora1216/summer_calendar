@@ -2,6 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+class EventData {
+  DateTime date;
+  List<String> events;
+
+  EventData(this.date, this.events);
+}
+
 class CalenderScreen extends StatefulWidget {
   const CalenderScreen({super.key});
 
@@ -10,17 +17,23 @@ class CalenderScreen extends StatefulWidget {
 }
 
 class _CalenderPageState extends State<CalenderScreen> {
-  int _counter = 0;
+  List<EventData> eventList = [];
+  List<String> selectEvent = [];
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter += 2;
-    });
+  @override
+  void initState() {
+    super.initState();
+    eventList = [
+      EventData(DateTime.now().add(Duration(days: 2)), ["event", "event1"]),
+      EventData(DateTime.now().add(Duration(days: 3)),
+          ["event1", "event1", "event1", "event1"]),
+      EventData(DateTime.now().add(Duration(days: 4)), ["event2", "event1"]),
+      EventData(DateTime.now().add(Duration(days: 5)), ["event3", "event1"]),
+      EventData(DateTime.now().add(Duration(days: 6)), ["event4", "event1"]),
+      EventData(DateTime.now().add(Duration(days: 7)), ["event45", "event1"]),
+      EventData(DateTime.now().add(Duration(days: 8)), ["event456", "event1"]),
+      EventData(DateTime.now().add(Duration(days: 9)), ["event456", "event1"]),
+    ];
   }
 
   DateTime _focusedDay = DateTime.now();
