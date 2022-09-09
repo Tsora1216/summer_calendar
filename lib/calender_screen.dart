@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:summer_calendar/router_manager.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -12,6 +11,7 @@ class EventData {
 
 class CalenderScreen extends StatefulWidget {
   const CalenderScreen({super.key});
+
   @override
   State<CalenderScreen> createState() => _CalenderPageState();
 }
@@ -24,18 +24,21 @@ class _CalenderPageState extends State<CalenderScreen> {
   void initState() {
     super.initState();
     eventList = [
-      EventData(DateTime.now().add(Duration(days: 2)), ["event", "event1"]),
-      EventData(DateTime.now().add(Duration(days: 3)),
+      ///テストデータ
+      EventData(DateTime.now().add(const Duration(days: 2)), ["event", "event1"]),
+      EventData(DateTime.now().add(const Duration(days: 3)),
           ["event1", "event1", "event1", "event1"]),
-      EventData(DateTime.now().add(Duration(days: 4)), ["event2", "event1"]),
-      EventData(DateTime.now().add(Duration(days: 5)), ["event3", "event1"]),
-      EventData(DateTime.now().add(Duration(days: 6)), ["event4", "event1"]),
-      EventData(DateTime.now().add(Duration(days: 7)), ["event45", "event1"]),
-      EventData(DateTime.now().add(Duration(days: 8)), ["event456", "event1"]),
-      EventData(DateTime.now().add(Duration(days: 9)), ["event456", "event1"]),
+      EventData(DateTime.now().add(const Duration(days: 4)), ["event2", "event1"]),
+      EventData(DateTime.now().add(const Duration(days: 5)), ["event3", "event1"]),
+      EventData(DateTime.now().add(const Duration(days: 6)), ["event4", "event1"]),
+      EventData(DateTime.now().add(const Duration(days: 7)), ["event45", "event1"]),
+      EventData(DateTime.now().add(const Duration(days: 8)), ["event456", "event1"]),
+      EventData(DateTime.now().add(const Duration(days: 9)), ["event456", "event1"]),
     ];
   }
-  void _segueToTextInput(BuildContext context){
+
+  ///入力画面に遷移
+  void _segueToTextInput(BuildContext context) {
     Navigator.of(context).pushNamed(Routers.textInput);
   }
 
@@ -47,9 +50,9 @@ class _CalenderPageState extends State<CalenderScreen> {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("カレンダー"),
+        title: const Text("カレンダー"),
       ),
-      body: Container(
+      body: SizedBox(
         height: screenSize.height,
         child: Stack(
           children: [
@@ -62,14 +65,10 @@ class _CalenderPageState extends State<CalenderScreen> {
                     },
                     onDaySelected: (selectedDay, focusedDay) {
                       final filterEvent = eventList
-                          .where((element) =>
-                              isSameDay(element.date, selectedDay))
+                          .where(
+                              (element) => isSameDay(element.date, selectedDay))
                           .toList();
-                      if (filterEvent.isNotEmpty) {
-                        print(filterEvent[0].events);
-                      }
-                      print(isSameDay(selectedDay, _selectedDay));
-                      if (!isSameDay(selectedDay, _selectedDay))
+                      if (!isSameDay(selectedDay, _selectedDay)) {
                         setState(() {
                           _selectedDay = selectedDay;
                           _focusedDay =
@@ -78,6 +77,7 @@ class _CalenderPageState extends State<CalenderScreen> {
                             selectEvent = filterEvent.first.events;
                           }
                         });
+                      }
                     },
                     firstDay: DateTime.utc(2022, 4, 1),
                     lastDay: DateTime.utc(2025, 12, 31),
@@ -100,12 +100,12 @@ class _CalenderPageState extends State<CalenderScreen> {
               bottom: 24,
               right: 24,
               child: GestureDetector(
-                onTap: ()=> _segueToTextInput(context),
+                onTap: () => _segueToTextInput(context),
                 child: Container(
                   height: 50,
                   color: Colors.red,
                   width: 50,
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
                     size: 30.0,

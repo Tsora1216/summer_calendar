@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:summer_calendar/style_manager.dart';
 
@@ -14,7 +13,7 @@ class _TextInputPageState extends State<TextInputScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("カレンダー"),
+        title: const Text("カレンダー"),
       ),
       body: Center(
         child: Padding(
@@ -22,8 +21,7 @@ class _TextInputPageState extends State<TextInputScreen> {
           child: Column(
             children: [
               Container(
-                child: TextField(),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: Border(
                     left: BorderSide(color: Colors.orange, width: 3),
                   ),
@@ -32,16 +30,17 @@ class _TextInputPageState extends State<TextInputScreen> {
                       color: Colors.white,
                       spreadRadius: 2,
                       blurRadius: 2,
-                      offset: const Offset(0, 1), // changes position of shadow
+                      offset: Offset(0, 1), // changes position of shadow
                     ),
                   ],
                 ),
+                child: const TextField(),
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context).pop(),
                 child: Container(
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   color: Colors.red,
                   child: Text(
                     "追加",
