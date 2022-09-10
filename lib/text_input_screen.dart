@@ -17,7 +17,7 @@ class _TextInputPageState extends State<TextInputScreen> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
           child: Column(
             children: [
               Container(
@@ -34,7 +34,10 @@ class _TextInputPageState extends State<TextInputScreen> {
                     ),
                   ],
                 ),
-                child: const TextField(),
+                child: TextField(
+                  autofocus: true,
+                  decoration: InputDecoration(hintText: "予定を追加"),onChanged: (value)=>print(value),
+                ),
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context).pop(),

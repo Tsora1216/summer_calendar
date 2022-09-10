@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715359135539",
+    "project_id": "summer-calendar-3d320",
+    "storage_bucket": "summer-calendar-3d320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715359135539:android:bd3d9f8e3770d813abc046",
+        "android_client_info": {
+          "package_name": "com.example.summer_calendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715359135539-h07umdtlnp3ethqvs7nan4gop2u4bt3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAMRCM1dZuKdxPGSaFbmtIANhcUd2oGVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715359135539-h07umdtlnp3ethqvs7nan4gop2u4bt3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
