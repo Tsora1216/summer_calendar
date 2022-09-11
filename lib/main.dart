@@ -1,9 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:summer_calendar/router_manager.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:summer_calendar/style_manager.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,21 +66,59 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               'わくわく夏休みガチャ',
-              style: TextStyleManager.s24blackTextStyle
-              ,
+              style: TextStyleManager.s24blackTextStyle,
             ),
-            const Text(
-              'ガチャを引く',
+            SizedBox(
+              height: 16,
             ),
 
             GestureDetector(
-              onTap: () => showCustomWidgetDialog(context,widget: test()),
+              onTap: () => showCustomWidgetDialog(context, widget: test()),
               child: Container(
                 height: 50,
                 color: Colors.red,
                 width: 200,
+                child: Text(
+                  "カレンダー作成",
+                  style: TextStyleManager.s16blackTextStyle
+                      .copyWith(color: Colors.white),
+                ),
+                alignment: Alignment.center,
               ),
             ),
+            SizedBox(
+              height: 16,
+            ),
+
+            GestureDetector(
+              onTap: () => _segueToCalender(context),
+              child: Container(
+                height: 50,
+                color: Colors.red,
+                width: 200,
+                child: Text(
+                  "カレンダーへ移動",
+                  style: TextStyleManager.s16blackTextStyle
+                      .copyWith(color: Colors.white),
+                ),
+                alignment: Alignment.center,
+              ),
+            ),
+            // SizedBox(
+            //   height: 16,
+            // ),
+            // const Text(
+            //   'カレンダーへ移動',
+            // ),
+            // GestureDetector(
+            //   onTap: () => showCustomWidgetDialog(context, widget: test()),
+            //   child: Container(
+            //     height: 50,
+            //     color: Colors.red,
+            //     width: 200,
+            //   ),
+            // ),
+
             // GestureDetector(
             //   onTap: () => _incrementCounter(),
             //   child: const Text('こんにちは'),
@@ -104,21 +142,97 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class test extends ConsumerWidget{
+class test extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Text("returntext");
+    return Column(
+      children: [
+        const Text("詳細設定"),
+        SizedBox(
+          height: 16,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              height: 50,
+              color: Colors.red,
+              child: Text(
+                "Aプラン：アウトドアコース",
+                style: TextStyleManager.s10blackTextStyle
+                    .copyWith(color: Colors.white),
+              ),
+              alignment: Alignment.center,
+            ),
+            Container(
+              height: 50,
+              color: Colors.red,
+              child: Text(
+                "Bプラン：スポーツコース",
+                style: TextStyleManager.s10blackTextStyle
+                    .copyWith(color: Colors.white),
+              ),
+              alignment: Alignment.center,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 16,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              height: 50,
+              color: Colors.red,
+              child: Text(
+                "開始日",
+                style: TextStyleManager.s16blackTextStyle
+                    .copyWith(color: Colors.white),
+              ),
+              alignment: Alignment.center,
+            ),
+            Text("~"),
+            Container(
+              height: 50,
+              color: Colors.red,
+              child: Text(
+                "終了日",
+                style: TextStyleManager.s16blackTextStyle
+                    .copyWith(color: Colors.white),
+              ),
+              alignment: Alignment.center,
+            ),
+          ],
+        ),
+        const Text("友達の追加"),
+        for(var i in ["",""])
+        Row(children: [
+          Icon(Icons.account_box_outlined),
+          Container(
+            child: TextField(),
+            color: Colors.orange,
+            width: 100,
+          ),
+          Icon(Icons.accessible_forward_outlined),///下矢印に変える
+        ]),
+        SizedBox(
+          height: 16,
+        ),
+        const Text("イベントの追加"),
+      ],
+      mainAxisSize: MainAxisSize.min,
+    );
 
-    GestureDetector(
-      onTap: () => showCustomWidgetDialog(context,widget: test()),
-      child: Container(
-        height: 50,
-        color: Colors.red,
-        width: 200,
-      ),
-    )
+    // GestureDetector(
+    //   onTap: () => showCustomWidgetDialog(context,widget: test()),
+    //   child: Container(
+    //     height: 50,
+    //     color: Colors.red,
+    //     width: 200,
+    //   ),
+    // ),
   }
-
 }
 
 Future<bool?> showCustomWidgetDialog(BuildContext context,
@@ -135,8 +249,7 @@ Future<bool?> showCustomWidgetDialog(BuildContext context,
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
         child: Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: 18, horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
             child: widget),
       ),
     ),
