@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:summer_calendar/firestore_config.dart';
 import 'package:summer_calendar/style_manager.dart';
 
 class TextInputScreen extends StatefulWidget {
@@ -11,6 +12,15 @@ class TextInputScreen extends StatefulWidget {
 class _TextInputPageState extends State<TextInputScreen> {
   @override
   Widget build(BuildContext context) {
+    void onTapEventAdd() async{
+      final ddd = await FirestoreConfig();
+
+      await ddd.setData(collection: CollectionName.Event, payload: {"test":"test1"});
+
+      //await FirestoreConfig().setData(collection: CollectionName.Event, payload: {"test":"test1"});
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("カレンダー"),
@@ -36,11 +46,15 @@ class _TextInputPageState extends State<TextInputScreen> {
                 ),
                 child: TextField(
                   autofocus: true,
-                  decoration: InputDecoration(hintText: "予定を追加"),onChanged: (value)=>print(value),
+                  decoration: InputDecoration(hintText: "予定を追加"),
+                  onChanged: (value) => print(value),
                 ),
               ),
               GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
+                onTap: (){
+                  print("A");
+                  onTapEventAdd();
+                },
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   margin: const EdgeInsets.all(8),

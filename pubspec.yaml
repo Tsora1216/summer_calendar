@@ -42,11 +42,16 @@ dev_dependencies:
     sdk: flutter
     # firebase
   firebase_core: ^1.17.0
-  firebase_auth: ^3.3.18
-  firebase_crashlytics: ^2.8.0
-  firebase_messaging: ^11.4.1
-  firebase_storage: ^10.2.16
+#  firebase_auth: ^3.3.18
+#  firebase_crashlytics: ^2.8.0
+#  firebase_messaging: ^11.4.1
+#  firebase_storage: ^10.2.16
   cloud_firestore: ^3.1.15
+
+  #firebase_core: ^0.4.0+9
+  #firebase_analytics: ^5.0.2
+  #firebase_auth: ^2.0.0
+  #cloud_firestore: ^0.12.9+5
   # uuid
   uuid: ^3.0.6
   riverpod: ^1.0.3
@@ -58,6 +63,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+  flutter_riverpod: ^1.0.3
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
