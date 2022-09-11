@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum CollectionName {
   Event,
 }
+
+final storeProvider = Provider<FirestoreConfig>((context) => FirestoreConfig());
 
 class FirestoreConfig {
   final _firestore = FirebaseFirestore.instance;

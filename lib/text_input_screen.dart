@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:summer_calendar/firestore_config.dart';
 import 'package:summer_calendar/style_manager.dart';
 
-class TextInputScreen extends StatefulWidget {
+class TextInputScreen extends ConsumerWidget {
   const TextInputScreen({super.key});
-
   @override
-  State<TextInputScreen> createState() => _TextInputPageState();
-}
-
-class _TextInputPageState extends State<TextInputScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref)  {
     void onTapEventAdd() async{
-      final ddd = await FirestoreConfig();
+      final ddd = ref.read(storeProvider);
 
       await ddd.setData(collection: CollectionName.Event, payload: {"test":"test1"});
 
       //await FirestoreConfig().setData(collection: CollectionName.Event, payload: {"test":"test1"});
       Navigator.of(context).pop();
     }
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("カレンダー"),
@@ -51,7 +45,7 @@ class _TextInputPageState extends State<TextInputScreen> {
                 ),
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   print("A");
                   onTapEventAdd();
                 },

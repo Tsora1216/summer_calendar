@@ -5,10 +5,11 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:summer_calendar/router_manager.dart';
 import 'package:summer_calendar/style_manager.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  initializeDateFormatting().then((_) => runApp(const MyApp()));
+  initializeDateFormatting().then((_) => runApp( const ProviderScope(child: MyApp())));
 }
 
 class MyApp extends StatelessWidget {
